@@ -1,13 +1,29 @@
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
 
-        System.out.println("This is your enemies current health, guess the right number, and inflict 10 points of damage!");
 
-        System.out.println("Roll the dice player name");
 
-        dice_roll current_role = new dice_roll();
+        Scanner scan = new Scanner(System.in);
 
-        System.out.println(current_role);
+        //Ask for users first name
+        System.out.println("What is your first name?");
+        String first_name = scan.next();
+
+        //Ask For last name
+        System.out.println("What is your last name");
+        String last_name = scan.next();
+
+        //Ask if the player they want to roll the dice
+        System.out.println("Hello "+first_name+" "+last_name+"its time to roll the dice, are you ready");
+
+
+
+
+
+        dice_roll dr = new dice_roll();
+        System.out.println(dr.roll());
 
     }
 }
