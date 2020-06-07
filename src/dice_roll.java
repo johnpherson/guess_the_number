@@ -12,5 +12,4 @@ public class dice_roll {
                 return currentRoll;
         }
 
-
 }
