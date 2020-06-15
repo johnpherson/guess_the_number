@@ -2,8 +2,6 @@ import java.util.Scanner;
 
 public class player {
 
-
-
     public player(){
 
         String first_name;
@@ -28,10 +26,10 @@ public class player {
         return last_name;
     }
 
-    public int get_player_health(){
-        int health;
-        return health;
-    }
+//    public int get_player_health(){
+//        int health;
+//        return health;
+//    }
 
 
 }

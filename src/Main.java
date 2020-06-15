@@ -16,9 +16,8 @@ public class Main {
         String last_name = p.get_last_name();
 
         //Tell about starting health
-        int starting_health = p.get_player_health();
-        System.out.println("Hello "+first_name+"Your players starting health is: "+starting_health+" your opponents starting health will also be "+starting_health+" for every guess you get correct you will damage oppenet by 10");
-
+//        int starting_health = p.get_player_health();
+//        System.out.println("Hello "+first_name+"Your players starting health is: "+starting_health+" your opponents starting health will also be "+starting_health+" for every guess you get correct you will damage oppenet by 10");
 
 
         //Ask if the player they want to roll the dice
@@ -32,30 +31,31 @@ public class Main {
 
         //show what the player rolled
         int player_roll = dr.roll();
-        System.out.println("you rolled a "+player_roll);
+        System.out.println("you rolled a " + player_roll);
 
         //show what the enemy rolled
         System.out.println("Now lets see what your enemy has rolled");
         int enemy_roll = dr.roll();
-        System.out.println("Your enemy rolled a "+enemy_roll);
+        System.out.println("Your enemy rolled a " + enemy_roll);
 
         //if players score is higher than enemy, deduct 5 points
 
-        if (enemy_roll > player_roll){
-            //run method that deducts from player
-            System.out.println("You lose this round!");
-            ed.subtract_enemy_health();
-            System.out.println("You're new health is "+p.get_player_health());
-
-
-        } else if (player_roll > enemy_roll);{
-            //run method to deduct from enemy
+        if (enemy_roll < player_roll) {
+            //run method that deducts from enemy
             System.out.println("You win this round!");
+            ed.subtract_enemy_health();
+            System.out.println("Your enemys health is " + ed.enemy_health);
+
+        if (enemy_roll > player_roll) {
+            //run method that deducts fromt player
+            System.out.println("You lose this round!");
+            pd.subtract_player_health();
+            System.out.println("Your new health is: "+pd.player_health);
+
         }
 
-        System.out.println("Your new health is "+p.get_player_health());
-
-
+        }
     }
 }
-//http://127.0.0.1:52771/?key=7010ee28-8d52-4e83-a558-49992f16d78b
+
+
