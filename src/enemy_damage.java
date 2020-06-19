@@ -16,10 +16,6 @@ public class enemy_damage extends enemy {
 //    }
 
 
-
-
-
-
     int enemy_health = 100;
 
     public int subtract_enemy_health(){
@@ -27,3 +23,4 @@ public class enemy_damage extends enemy {
         return enemy_health;
     }
 }
+
