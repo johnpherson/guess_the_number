@@ -1,10 +1,14 @@
+import java.security.KeyStore;
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-
 
         player p = new player();
         player_damage pd = new player_damage();
         enemy_damage ed = new enemy_damage();
+
+
 
         //Ask for users first name
         System.out.println("What is your first name?");
@@ -15,47 +19,66 @@ public class Main {
         System.out.println("What is your last name?");
         String last_name = p.get_last_name();
 
-        //Tell about starting health
-//        int starting_health = p.get_player_health();
-//        System.out.println("Hello "+first_name+"Your players starting health is: "+starting_health+" your opponents starting health will also be "+starting_health+" for every guess you get correct you will damage oppenet by 10");
+
+        int player_health = 100;
+        int enemy_health = 100;
+        Scanner roll_again = new Scanner(System.in);
 
 
-        //Ask if the player they want to roll the dice
-        //Scanner scdr = new Scanner(System.in);
-        //System.out.println("Hello "+first_name+" "+last_name+"its time to roll the dice, are you ready? Type Yes or No");
-        //String dice_roll_response =  scdr.nextLine();
+
+        while(player_health > 0 && enemy_health > 0) {
+
+            dice_roll dr = new dice_roll();
+
+            //show what the player rolled
+            int player_roll = dr.roll();
+            System.out.println("you rolled a " + player_roll);
+
+            //show what the enemy rolled
+            System.out.println("Now lets see what your enemy has rolled");
+            int enemy_roll = dr.roll();
+            System.out.println("Your enemy rolled a " + enemy_roll);
+
+            //if players score is higher than enemy, deduct 5 points
+
+            if (enemy_roll < player_roll) {
+                //run method that deducts from enemy
+                enemy_health -= 10;
+                System.out.println("Your enemys health is " + enemy_health);
+            }
 
 
-        dice_roll dr = new dice_roll();
+            if (enemy_roll > player_roll) {
+                //run method that deducts fromt player
+                System.out.println("You lose this round!");
+                player_health -= 5;
+                System.out.println("Your new health is: " + player_health);
+
+            }
 
 
-        //show what the player rolled
-        int player_roll = dr.roll();
-        System.out.println("you rolled a " + player_roll);
+            if (enemy_roll == player_roll) {
+                System.out.println("You tied");
 
-        //show what the enemy rolled
-        System.out.println("Now lets see what your enemy has rolled");
-        int enemy_roll = dr.roll();
-        System.out.println("Your enemy rolled a " + enemy_roll);
 
-        //if players score is higher than enemy, deduct 5 points
-
-        if (enemy_roll < player_roll) {
-            //run method that deducts from enemy
-            System.out.println("You win this round!");
-            ed.subtract_enemy_health();
-            System.out.println("Your enemys health is " + ed.enemy_health);
-
-        if (enemy_roll > player_roll) {
-            //run method that deducts fromt player
-            System.out.println("You lose this round!");
-            pd.subtract_player_health();
-            System.out.println("Your new health is: "+pd.player_health);
-
+            }
         }
 
-        }
     }
 }
 
-
+//
+//public class Test {
+//
+//    public static void main(String args[]) {
+//        int [] numbers = {10, 20, 30, 40, 50};
+//
+//        for(int x : numbers ) {
+//            if( x == 30 ) {
+//                continue;
+//            }
+//            System.out.print( x );
+//            System.out.print("\n");
+//        }
+//    }
+//}
